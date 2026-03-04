@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Doce Guia - Receitas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Encontre receitas de doces...">
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <header class="cabecalho">
+        <h1>🍰 Doce Guia</h1>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="#">Categorias</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="area-principal">
+        
+        <section id="filtro-ingredientes">
+            <h2>O que você tem em casa?</h2>
+
+            <form id="form-filtro">
+                <fieldset>
+                    <legend>Selecione os ingredientes:</legend>
+                    <label><input type="checkbox" name="ingredientes" value="chocolate"> Chocolate</label>
+                    <label><input type="checkbox" name="ingredientes" value="leite"> Leite</label>
+                    <label><input type="checkbox" name="ingredientes" value="farinha"> Farinha</label>
+                </fieldset>
+                <button type="submit">Buscar receitas</button>
+            </form>
+
+            <p id="mensagem-sem-resultados" hidden>
+                Nenhuma receita encontrada com esses ingredientes 😢
+            </p>
+        </section>
+
+        <section id="lista-receitas">
+            <h2>Receitas Disponíveis</h2>
+
+            <article class="card-receita">
+                <img src="images/bolo.webp" alt="Bolo de Chocolate" loading="lazy">
+                <h3><a href="receita.html">Bolo de Chocolate</a></h3>
+                <p>Tempo: 40 min</p>
+
+                <div class="tags">
+                    <span class="tag">Chocolate</span>
+                    <span class="tag">Tortas</span>
+                </div>
+            </article>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Doce Guia</p>
+    </footer>
+
+</body>
+</html>
