@@ -64,3 +64,95 @@
 .botao:hover {
     background-color: #2980b9; /* Cor muda quando passa o mouse */
 }
+/* ==========================================================
+   CONFIGURAÇÕES PARA TELAS MENORES (BREAKPOINTS)
+   ========================================================== */
+
+/* --- TABLET (Até 1024px) --- */
+@media screen and (max-width: 1024px) {
+    .cabecalho {
+        padding: 20px; /* Reduz o espaçamento lateral que era 40px */
+    }
+    
+    .galeria {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Duas imagens por linha na galeria */
+        gap: 15px;
+        padding: 10px;
+    }
+}
+
+/* --- MOBILE (Até 768px) --- */
+@media screen and (max-width: 768px) {
+    /* Ajuste do Cabeçalho: Empilha a logo e o menu */
+    .cabecalho {
+        flex-direction: column; 
+        gap: 15px;
+        text-align: center;
+    }
+
+    .menu ul {
+        gap: 10px;
+        padding: 0;
+    }
+
+    /* Ajuste do Cartão Principal e Formulários */
+    .area-principal {
+        height: auto; /* Deixa a altura livre para o conteúdo crescer */
+        padding: 40px 20px;
+    }
+
+    .cartao {
+        width: 100%; /* Ocupa a largura disponível */
+        max-width: 90%; /* Margem de segurança nas bordas */
+        padding: 20px;
+    }
+
+    /* Ajuste da Galeria de Imagens do Bolo */
+    .galeria {
+        grid-template-columns: 1fr; /* Uma imagem por linha no celular */
+    }
+
+    .galeria img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    /* Ajuste dos Inputs (Login e Receitas) */
+    input[type="text"], 
+    input[type="email"], 
+    input[type="password"], 
+    textarea, 
+    select {
+        width: 100%;
+        font-size: 16px; /* Evita o zoom automático do navegador */
+        margin-bottom: 10px;
+    }
+
+    .botao {
+        width: 100%; /* Botão grande e fácil de clicar no touch */
+        padding: 15px;
+    }
+
+    /* Melhora o espaçamento dos filtros de ingredientes */
+    #form-filtro fieldset {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+}
+
+/* --- SMARTPHONES PEQUENOS (Até 480px) --- */
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap; /* Faz as tags quebrarem de linha se não couberem */
+        gap: 5px;
+    }
+}
