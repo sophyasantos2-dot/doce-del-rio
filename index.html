@@ -6,6 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Encontre receitas de doces com os ingredientes que você tem em casa.">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/print.css" media="print">
+  <style>
+    @media (max-width: 768px) {
+      .card-receita {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -18,71 +26,54 @@
 </header>
 
 <main>
+  <section id="gerador-receita" style="text-align: center; padding: 20px; background: #fff5f5; border-radius: 10px; margin: 20px 0;">
+    <div id="recomendacao">
+      <p>Clique no botão para uma sugestão deliciosa!</p>
+    </div>
+    <button id="botaoReceita">Sugestão de Hoje 🧁</button>
+  </section>
 
-  <!-- FILTRO POR INGREDIENTES (RF02) -->
   <section id="filtro-ingredientes">
     <h2>O que você tem em casa?</h2>
-
     <form id="form-filtro">
       <fieldset>
         <legend>Selecione os ingredientes:</legend>
-
-        <!-- Gerado dinamicamente pelo backend -->
         <label><input type="checkbox" name="ingredientes" value="chocolate"> Chocolate</label>
         <label><input type="checkbox" name="ingredientes" value="leite"> Leite</label>
         <label><input type="checkbox" name="ingredientes" value="farinha"> Farinha</label>
-
       </fieldset>
-
       <button type="submit">Buscar receitas</button>
     </form>
-
     <p id="mensagem-sem-resultados" hidden>
       Nenhuma receita encontrada com esses ingredientes 😢
     </p>
   </section>
 
-  <!-- LISTAGEM DE RECEITAS -->
   <section id="lista-receitas">
     <h2>Receitas Disponíveis</h2>
-
     <article class="card-receita">
-      <img src="images/bolo.webp" alt="Bolo de Chocolate">
+      <img src="images/bolo.webp" alt="Bolo de Chocolate" loading="lazy">
       <h3><a href="receita.html">Bolo de Chocolate</a></h3>
       <p>Tempo: 40 min</p>
-
       <div class="tags">
         <span class="tag">Chocolate</span>
         <span class="tag">Tortas</span>
       </div>
     </article>
-
   </section>
 
-</main>
-
-<footer>
-  <p>© 2026 Doce Guia</p>
-</footer>
-
-</body>
-</html>
-<main>
+  <hr>
 
   <article class="receita-detalhe">
-
     <header>
-      <h1>Bolo de Chocolate</h1>
-
+      <h1>Bolo de Chocolate (Detalhes)</h1>
       <div class="categorias">
         <span class="tag">Chocolate</span>
         <span class="tag">Tortas</span>
       </div>
-
       <button onclick="window.print()">🖨 Imprimir / PDF</button>
     </header>
 
-    <!-- GALERIA DE IMAGENS (múltiplas imagens - RF01) -->
     <section class="galeria">
       <img src="images/bolo1.webp" alt="Imagem do bolo">
       <img src="images/bolo2.webp" alt="Fatia do bolo">
@@ -108,130 +99,25 @@
         <li>Asse por 40 minutos.</li>
       </ol>
     </section>
-
-    <section class="dicas">
-      <h2>Dicas</h2>
-      <p>Use chocolate 70% para um sabor mais intenso.</p>
-    </section>
-
   </article>
 
-  <!-- AVALIAÇÃO E COMENTÁRIOS (RF04) -->
-  <section id="avaliacoes">
-    <h2>Avaliações</h2>
+  <hr>
 
-    <form id="form-comentario">
-      <label>Nome (opcional):
-        <input type="text" name="nome">
-      </label>
-
-      <label>Nota:
-        <select name="nota" required>
-          <option value="5">⭐⭐⭐⭐⭐</option>
-          <option value="4">⭐⭐⭐⭐</option>
-          <option value="3">⭐⭐⭐</option>
-          <option value="2">⭐⭐</option>
-          <option value="1">⭐</option>
-        </select>
-      </label>
-
-      <label>Comentário:
-        <textarea name="comentario" required></textarea>
-      </label>
-
-      <button type="submit">Enviar</button>
+  <section id="admin">
+    <h2>Área do Administrador</h2>
+    <form method="POST" action="/admin/login">
+      <label>Email: <input type="email" required></label>
+      <label>Senha: <input type="password" required></label>
+      <button type="submit">Entrar</button>
     </form>
-
-    <div class="lista-comentarios">
-      <article class="comentario">
-        <strong>Maria</strong>
-        <span>⭐⭐⭐⭐⭐</span>
-        <p>Receita maravilhosa!</p>
-      </article>
-    </div>
   </section>
-
 </main>
-<form method="POST" action="/admin/login">
-  <h2>Login Administrador</h2>
 
-  <label>Email:
-    <input type="email" required>
-  </label>
+<footer>
+  <p>© 2026 Doce Guia</p>
+</footer>
 
-  <label>Senha:
-    <input type="password" required>
-  </label>
+<script src="script.js"></script>
 
-  <button type="submit">Entrar</button>
-</form>
-<nav>
-  <ul>
-    <li><a href="receitas.html">Gerenciar Receitas</a></li>
-    <li><a href="comentarios.html">Moderar Comentários</a></li>
-  </ul>
-</nav>
-<form enctype="multipart/form-data">
-
-  <label>Título*
-    <input type="text" required>
-  </label>
-
-  <label>Descrição
-    <textarea></textarea>
-  </label>
-
-  <label>Imagens
-    <input type="file" multiple accept="image/webp,image/jpeg">
-  </label>
-
-  <label>Tempo de Preparo
-    <input type="text">
-  </label>
-
-  <label>Rendimento
-    <input type="text">
-  </label>
-
-  <label>Ingredientes
-    <textarea></textarea>
-  </label>
-
-  <label>Modo de Preparo*
-    <textarea required></textarea>
-  </label>
-
-  <label>Categorias
-    <select multiple>
-      <option>Chocolate</option>
-      <option>Fit</option>
-      <option>Tortas</option>
-    </select>
-  </label>
-
-  <button type="submit">Salvar Receita</button>
-
-</form>
-<section>
-  <h2>Comentários Pendentes</h2>
-
-  <form>
-
-    <article>
-      <p><strong>João</strong> - Bolo de Chocolate</p>
-      <p>Comentário aguardando aprovação...</p>
-
-      <button type="submit" name="acao" value="aprovar">Aprovar</button>
-      <button type="submit" name="acao" value="excluir">Excluir</button>
-    </article>
-
-  </form>
-</section>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-@media (max-width: 768px) {
-  .card-receita {
-    flex-direction: column;
-  }
-}
-<link rel="stylesheet" href="css/print.css" media="print">
-<img loading="lazy">
+</body>
+</html>
