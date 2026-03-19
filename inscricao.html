@@ -3,84 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscrição - 1º Hackathon de Informática</title>
+    <title>Doces Delírio - Confeitaria Artesanal</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>Inscrição: 1º Hackathon de Informática da Escola</h1>
+    <div id="loader">
+        <div class="loader-content">
+            <div class="logo-circle">
+                <span class="logo-icon">🧁</span>
+            </div>
+            <div class="spinner"></div>
+            <p>Preparando doçuras...</p>
+        </div>
+        <audio id="loader-audio" src="doce.mp3" autoplay loop></audio>
+    </div>
 
-    <form action="#" method="POST" enctype="multipart/form-data">
-        
-        <fieldset>
-            <legend>Dados Pessoais</legend>
-            <p>
-                <label for="nome">Nome Completo:</label><br>
-                <input type="text" id="nome" name="nome" required>
-            </p>
-            <p>
-                <label for="email">E-mail:</label><br>
-                <input type="email" id="email" name="email" required>
-            </p>
-            <p>
-                <label for="senha">Senha para o sistema:</label><br>
-                <input type="password" id="senha" name="senha" required>
-            </p>
-            <p>
-                <label for="nascimento">Data de Nascimento:</label><br>
-                <input type="date" id="nascimento" name="nascimento">
-            </p>
-        </fieldset>
+    <header class="cabecalho">
+        <div class="menu-mobile">☰</div>
+        <div class="logo-container">
+            <div class="logo-mini"></div>
+            <h1 class="logo-texto">Doces Delírio</h1>
+        </div>
+        <div class="search-icon">🔍</div>
+    </header>
 
-        <fieldset>
-            <legend>Perfil Técnico</legend>
-            
-            <p>Quais linguagens você tem interesse?</p>
-            <input type="checkbox" id="html" name="interesse" value="html">
-            <label for="html">HTML</label><br>
-            <input type="checkbox" id="css" name="interesse" value="css">
-            <label for="css">CSS</label><br>
-            <input type="checkbox" id="js" name="interesse" value="js">
-            <label for="js">JavaScript</label><br>
-            <input type="checkbox" id="python" name="interesse" value="python">
-            <label for="python">Python</label>
+    <section class="banner">
+        <div class="overlay"></div>
+        <div class="banner-content">
+            <h2>Receitas de Bolos</h2>
+            <p>O toque artesanal que sua cozinha merece</p>
+        </div>
+    </section>
 
-            <p>Nível de Experiência:</p>
-            <input type="radio" id="iniciante" name="nivel" value="iniciante">
-            <label for="iniciante">Iniciante</label><br>
-            <input type="radio" id="intermediario" name="nivel" value="intermediario">
-            <label for="intermediario">Intermediário</label><br>
-            <input type="radio" id="avancado" name="nivel" value="avancado">
-            <label for="avancado">Avançado</label>
+    <nav class="categorias">
+        <button class="btn-filtro active">Todos</button>
+        <button class="btn-filtro">Chocolate</button>
+        <button class="btn-filtro">Fitness</button>
+        <button class="btn-filtro">Caseiro</button>
+    </nav>
 
-            <p>
-                <label for="arquivo">Anexe seu currículo ou portfólio:</label><br>
-                <input type="file" id="arquivo" name="arquivo">
-            </p>
-        </fieldset>
+    <main class="grid-receitas">
+        <div class="card">
+            <div class="card-img" style="background-image: url('bolo1.jpg');">
+                <span class="tag-cat">Fitness</span>
+            </div>
+            <div class="card-info">
+                <h3>Bolo de Aveia e Mel</h3>
+                <button class="btn-card">Eu quero</button>
+            </div>
+        </div>
 
-        <fieldset>
-            <legend>Detalhes do Evento</legend>
-            
-            <p>
-                <label for="camiseta">Tamanho da Camiseta:</label>
-                <select id="camiseta" name="camiseta">
-                    <option value="p">P</option>
-                    <option value="m">M</option>
-                    <option value="g">G</option>
-                    <option value="gg">GG</option>
-                </select>
-            </p>
+        <div class="card">
+            <div class="card-img" style="background-image: url('bolo2.jpg');">
+                <span class="tag-cat">Chocolate</span>
+            </div>
+            <div class="card-info">
+                <h3>Delírio de Cacau</h3>
+                <button class="btn-card">Eu quero</button>
+            </div>
+        </div>
+    </main>
 
-            <p>
-                <label for="motivacao">Por que você deseja participar?</label><br>
-                <textarea id="motivacao" name="motivacao" rows="5" cols="40" placeholder="Escreva sua carta de motivação aqui..."></textarea>
-            </p>
-        </fieldset>
-
-        <br>
-        <button type="submit">Enviar Inscrição</button>
-
-    </form>
-
+    <script>
+        window.addEventListener("load", function () {
+            const loader = document.getElementById("loader");
+            setTimeout(() => {
+                loader.style.display = "none";
+            }, 3000); // Fecha após 3 segundos
+        });
+    </script>
 </body>
 </html>
