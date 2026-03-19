@@ -3,74 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doces Delírio - Confeitaria Artesanal</title>
+    <title>Doces Delírio | Receitas Artesanais</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div id="loader">
-        <div class="loader-content">
+    <div id="loading-screen">
+        <div class="loader-container">
             <div class="logo-circle">
-                <span class="logo-icon">🧁</span>
+                <span class="emoji-logo">🧁</span>
             </div>
             <div class="spinner"></div>
-            <p>Preparando doçuras...</p>
+            <p class="loading-text">Preparando doçuras...</p>
         </div>
-        <audio id="loader-audio" src="doce.mp3" autoplay loop></audio>
     </div>
 
-    <header class="cabecalho">
-        <div class="menu-mobile">☰</div>
-        <div class="logo-container">
-            <div class="logo-mini"></div>
-            <h1 class="logo-texto">Doces Delírio</h1>
-        </div>
-        <div class="search-icon">🔍</div>
-    </header>
+    <div id="main-content" style="display: none;">
+        <header class="cabecalho">
+            <div class="menu-icon">☰</div>
+            <h1 class="brand-name">Doces Delírio</h1>
+            <div class="user-icon">👤</div>
+        </header>
 
-    <section class="banner">
-        <div class="overlay"></div>
-        <div class="banner-content">
-            <h2>Receitas de Bolos</h2>
-            <p>O toque artesanal que sua cozinha merece</p>
-        </div>
-    </section>
+        <section class="hero-banner">
+            <div class="overlay"></div>
+            <div class="banner-text">
+                <h2>Receitas de Bolos</h2>
+                <p>O sabor da confeitaria na sua casa</p>
+            </div>
+        </section>
 
-    <nav class="categorias">
-        <button class="btn-filtro active">Todos</button>
-        <button class="btn-filtro">Chocolate</button>
-        <button class="btn-filtro">Fitness</button>
-        <button class="btn-filtro">Caseiro</button>
-    </nav>
+        <nav class="categories-nav">
+            <button class="cat-btn active">Todos</button>
+            <button class="cat-btn">Chocolate</button>
+            <button class="cat-btn">Fitness</button>
+            <button class="cat-btn">Caseiro</button>
+        </nav>
 
-    <main class="grid-receitas">
-        <div class="card">
-            <div class="card-img" style="background-image: url('bolo1.jpg');">
-                <span class="tag-cat">Fitness</span>
+        <main class="recipe-grid">
+            <div class="recipe-card">
+                <div class="recipe-thumb" style="background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80');">
+                    <span class="badge">Fitness</span>
+                </div>
+                <div class="recipe-info">
+                    <h3>Bolo de Aveia e Mel</h3>
+                    <button class="action-btn">Eu quero</button>
+                </div>
             </div>
-            <div class="card-info">
-                <h3>Bolo de Aveia e Mel</h3>
-                <button class="btn-card">Eu quero</button>
+            <div class="recipe-card">
+                <div class="recipe-thumb" style="background-image: url('https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=400&q=80');">
+                    <span class="badge">Chocolate</span>
+                </div>
+                <div class="recipe-info">
+                    <h3>Delírio de Ganache</h3>
+                    <button class="action-btn">Eu quero</button>
+                </div>
             </div>
-        </div>
-
-        <div class="card">
-            <div class="card-img" style="background-image: url('bolo2.jpg');">
-                <span class="tag-cat">Chocolate</span>
-            </div>
-            <div class="card-info">
-                <h3>Delírio de Cacau</h3>
-                <button class="btn-card">Eu quero</button>
-            </div>
-        </div>
-    </main>
+        </main>
+    </div>
 
     <script>
-        window.addEventListener("load", function () {
-            const loader = document.getElementById("loader");
+        // Simulação de carregamento
+        window.addEventListener('load', () => {
             setTimeout(() => {
-                loader.style.display = "none";
-            }, 3000); // Fecha após 3 segundos
+                document.getElementById('loading-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loading-screen').style.display = 'none';
+                    document.getElementById('main-content').style.display = 'block';
+                }, 500);
+            }, 2500); // 2.5 segundos de loading
         });
     </script>
 </body>
