@@ -3,76 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doces Delírio | Receitas Artesanais</title>
+    <title>Doce Delírio | Receitas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div id="loading-screen">
-        <div class="loader-container">
-            <div class="logo-circle">
-                <span class="emoji-logo">🧁</span>
-            </div>
-            <div class="spinner"></div>
-            <p class="loading-text">Preparando doçuras...</p>
-        </div>
+<div id="loading">
+    <div class="load-cake">🎂</div>
+    <div class="load-title">Preparando...</div>
+    <div class="load-dots">
+        <span class="load-dot"></span><span class="load-dot"></span><span class="load-dot"></span>
     </div>
+</div>
 
-    <div id="main-content" style="display: none;">
-        <header class="cabecalho">
-            <div class="menu-icon">☰</div>
-            <h1 class="brand-name">Doces Delírio</h1>
-            <div class="user-icon">👤</div>
+<div class="drawer-overlay" id="overlay" onclick="toggleDrawer()"></div>
+<nav class="drawer" id="drawer">
+    <button class="drawer-close" onclick="toggleDrawer()">✕</button>
+    <h2 class="drawer-brand">Doce Delírio</h2>
+    <ul class="drawer-links">
+        <li><a href="#" onclick="filterCat('all'); toggleDrawer()">✨ Todas as Receitas</a></li>
+        <li><a href="#" onclick="filterCat('fitness'); toggleDrawer()">💪 Bolos Fitness</a></li>
+        <li><a href="#" onclick="filterCat('doces'); toggleDrawer()">🍓 Bolos Doces</a></li>
+        <li><a href="#" onclick="filterCat('chocolate'); toggleDrawer()">🍫 Bolos de Chocolate</a></li>
+        <li><a href="#" onclick="filterCat('caseiros'); toggleDrawer()">🏡 Bolos Caseiros</a></li>
+    </ul>
+</nav>
+
+<div id="app" style="display:none">
+    <div id="page-home">
+        <header>
+            <div class="header-brand" onclick="filterCat('all')">
+                <span class="brand-cake">🧁</span>
+                <span class="brand-name">Doce Delírio</span>
+                <div class="header-line"></div>
+                <span class="header-tag">Receitas</span>
+            </div>
+            <button class="menu-toggle" onclick="toggleDrawer()">
+                <span></span><span></span><span></span>
+            </button>
         </header>
 
-        <section class="hero-banner">
-            <div class="overlay"></div>
-            <div class="banner-text">
-                <h2>Receitas de Bolos</h2>
-                <p>O sabor da confeitaria na sua casa</p>
+        <section class="hero">
+            <span class="hero-deco-top">✦</span>
+            <span class="hero-deco-bottom">✦</span>
+            <div class="hero-eyebrow">Seleção Exclusiva</div>
+            <h1 class="hero-title">Caderno de <em>Receitas</em></h1>
+            <p class="hero-subtitle">Descubra sabores artesanais perfeitos para qualquer momento do seu dia.</p>
+            <div class="hero-divider">
+                <div class="divider-line"></div><span class="divider-icon">✿</span><div class="divider-line"></div>
             </div>
         </section>
 
-        <nav class="categories-nav">
-            <button class="cat-btn active">Todos</button>
-            <button class="cat-btn">Chocolate</button>
-            <button class="cat-btn">Fitness</button>
-            <button class="cat-btn">Caseiro</button>
-        </nav>
+        <section class="section-cats">
+            <h3 class="section-label">Categorias</h3>
+            <div class="cat-pills">
+                <button class="pill active" data-cat="all" onclick="filterCat('all')">Todos</button>
+                <button class="pill" data-cat="fitness" onclick="filterCat('fitness')">Fitness</button>
+                <button class="pill" data-cat="doces" onclick="filterCat('doces')">Doces</button>
+                <button class="pill" data-cat="chocolate" onclick="filterCat('chocolate')">Chocolate</button>
+                <button class="pill" data-cat="caseiros" onclick="filterCat('caseiros')">Caseiros</button>
+            </div>
+        </section>
 
-        <main class="recipe-grid">
-            <div class="recipe-card">
-                <div class="recipe-thumb" style="background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80');">
-                    <span class="badge">Fitness</span>
-                </div>
-                <div class="recipe-info">
-                    <h3>Bolo de Aveia e Mel</h3>
-                    <button class="action-btn">Eu quero</button>
-                </div>
+        <section class="section-recipes">
+            <div class="section-heading">
+                <span class="heading-ornament">✧</span>
+                <h2 class="heading-text" id="heading-text">Todas as receitas</h2>
+                <span class="heading-count" id="heading-count">0 receitas</span>
             </div>
-            <div class="recipe-card">
-                <div class="recipe-thumb" style="background-image: url('https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=400&q=80');">
-                    <span class="badge">Chocolate</span>
-                </div>
-                <div class="recipe-info">
-                    <h3>Delírio de Ganache</h3>
-                    <button class="action-btn">Eu quero</button>
-                </div>
-            </div>
-        </main>
+            <div class="cards-grid" id="grid"></div>
+        </section>
+        
+        <footer><span>Doce Delírio</span> · Feito com ♥</footer>
     </div>
 
-    <script>
-        // Simulação de carregamento
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loading-screen').style.opacity = '0';
-                setTimeout(() => {
-                    document.getElementById('loading-screen').style.display = 'none';
-                    document.getElementById('main-content').style.display = 'block';
-                }, 500);
-            }, 2500); // 2.5 segundos de loading
-        });
-    </script>
+    <div id="page-detail" style="display:none">
+        <div class="detail-hero">
+            <div class="back-wrap">
+                <button class="btn-back" onclick="goHome()">← Voltar</button>
+            </div>
+            <img id="d-img" src="" alt="Foto do bolo">
+            <div id="d-emoji" class="detail-hero-emoji" style="display:none"></div>
+            <div class="detail-overlay">
+                <h2 class="detail-title" id="d-name"></h2>
+                <div><span class="detail-time-badge" id="d-time"></span></div>
+            </div>
+        </div>
+        <div class="detail-body">
+            <div class="detail-card">
+                <h3 class="detail-card-title">Ingredientes</h3>
+                <ul class="ing-list" id="d-ings"></ul>
+            </div>
+            <div class="detail-card">
+                <h3 class="detail-card-title">Modo de Preparo</h3>
+                <ol class="steps-list" id="d-steps"></ol>
+            </div>
+        </div>
+        <footer><span>Doce Delírio</span> · Feito com ♥</footer>
+    </div>
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>
