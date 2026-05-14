@@ -1,0 +1,45 @@
+//Tabela de Usuários
+Table usuarios {
+  id integer [primary key, increment]
+  nome varchar [not null]
+  email varchar [unique, not null]
+  senha varchar [not null]
+  criado_em timestamp [default: `now()`]
+}
+
+// Tabela de Produtos
+Table produtos {
+  id integer [primary key, increment]
+  nome varchar [not null]
+  descricao text
+  preco decimal(10,2) [not null]
+  estoque integer [not null]
+}
+
+// Tabela de Pedidos
+Table pedidos {
+  id integer [primary key, increment]
+  usuario_id integer [not null] // Chave estrangeira
+  status varchar
+  total decimal(10,2)
+  criado_em timestamp
+}
+
+// Tabela de Itens do Pedido (Relacionamento N:N)
+Table itens_pedido {
+  id integer [primary key, increment]
+  pedido_id integer
+  produto_id integer
+  quantidade integer [not null]
+  preco_unitario decimal(10,2)
+}
+
+
+// Um usuário tem muitos pedidos
+Ref: pedidos.usuario_id > usuarios.id 
+
+// Um pedido tem muitos itens
+Ref: itens_pedido.pedido_id > pedidos.id
+
+// Um produto pode estar em muitos itens de pedidos diferentes
+Ref: itens_pedido.produto_id > produtos.id
