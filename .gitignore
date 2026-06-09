@@ -1,0 +1,24 @@
+﻿# Dependências e ambientes
+*.sqlite
+.env
+.env.local
+config.ini
+node_modules/
+
+# IDE e sistema
+.vscode/settings.json
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Temporários
+temp/
+tmp/
+*.tmp
+app/migration/*.sqlite
+

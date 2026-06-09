@@ -1,0 +1,26 @@
+# EditorConfig para padronização
+# https://editorconfig.org
+
+root = true
+
+# Todos os arquivos
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# PHP
+[*.php]
+indent_style = space
+indent_size = 4
+max_line_length = 120
+
+# HTML, CSS, JS
+[*.{html,css,js,json}]
+indent_style = space
+indent_size = 2
+
+# Markdown
+[*.md]
+trim_trailing_whitespace = false
