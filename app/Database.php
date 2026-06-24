@@ -52,7 +52,17 @@ class Database {
             $path = $this->config['database']['path'] ?? 'database.sqlite';
 
             if ($driver === 'sqlite') {
-                $dsn = 'sqlite:' . __DIR__ . '/../' . $path;
+                $projectRoot = realpath(__DIR__ . '/..');
+                if ($projectRoot === false) {
+                    throw new Exception("Não foi possível resolver o caminho do projeto.");
+                }
+
+                $databaseFile = $path;
+                if (!preg_match('/^(?:[A-Za-z]:[\/\\]|\/)/', $databaseFile)) {
+                    $databaseFile = $projectRoot . '/' . ltrim($path, '/\\');
+                }
+
+                $dsn = 'sqlite:' . $databaseFile;
             } else {
                 throw new Exception("Driver não suportado: " . $driver);
             }

@@ -1,23 +1,23 @@
 <?php
 class Migration {
     public static function executar() {
-        // Conecta (e cria, se não existir) o arquivo do banco de dados
-        $pdo = new PDO('sqlite:database.sqlite');
-        
-        // Comando SQL para criar a tabela
+        $databasePath = __DIR__ . '/banco.sqlite';
+        $pdo = new PDO('sqlite:' . $databasePath);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
         $sql = "CREATE TABLE IF NOT EXISTS alunos (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nome TEXT,
-            idade INTEGER,
-            curso TEXT
+            nome TEXT NOT NULL,
+            idade INTEGER NOT NULL,
+            curso TEXT NOT NULL,
+            data_criacao TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
         )";
-        
+
         $pdo->exec($sql);
         echo "Banco de dados e tabela criados com sucesso!\n";
     }
 }
 
-// Executa a função imediatamente ao rodar o arquivo
 Migration::executar();
 ?>
 

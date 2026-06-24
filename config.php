@@ -5,7 +5,7 @@
 
 // Banco de dados SQLite isolado em app/migration/
 if (!defined('DB_PATH')) {
-    define('DB_PATH', __DIR__ . '/app/migration/database.sqlite');
+    define('DB_PATH', __DIR__ . '/app/migration/banco.sqlite');
 }
 
 // Configurações de ambiente
