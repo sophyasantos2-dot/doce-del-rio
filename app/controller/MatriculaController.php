@@ -103,7 +103,7 @@ class MatriculaController {
      */
     private function renderView($view, $dados = []) {
         extract($dados);
-        $viewPath = __DIR__ . '/../../view/' . $view . '.php';
+        $viewPath = __DIR__ . '/../view/' . $view . '.php';
         
         if (!file_exists($viewPath)) {
             die("View não encontrada: " . $viewPath);

@@ -58,7 +58,7 @@ class Database {
                 }
 
                 $databaseFile = $path;
-                if (!preg_match('/^(?:[A-Za-z]:[\/\\]|\/)/', $databaseFile)) {
+                if (!preg_match('/^(?:[A-Za-z]:[\/\\\\]|\/)/', $databaseFile)) {
                     $databaseFile = $projectRoot . '/' . ltrim($path, '/\\');
                 }
 
@@ -90,5 +90,5 @@ class Database {
     /**
      * Impede desserialização da instância (Singleton)
      */
-    private function __wakeup() {}
+    public function __wakeup() {}
 }
